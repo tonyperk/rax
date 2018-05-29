@@ -114,8 +114,8 @@ def parse_and_build_list():
 	print_section()
 
 if __name__ == "__main__":
-	sections = [0 for i in range(MAX_DOT_NOTATION_LEN)]
+	#sections = [0 for i in range(MAX_DOT_NOTATION_LEN)]
 	#parse_tail_recursive(open('input2.txt').readlines(), 0, 0, 0, sections)
-	parse_tail_recursive(None, 0, 0, 0, sections)
+	#parse_tail_recursive(None, 0, 0, 0, sections)
 
-	#parse_and_build_list()
+	parse_and_build_list()
