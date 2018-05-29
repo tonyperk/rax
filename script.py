@@ -24,8 +24,7 @@ def count(s, c):
 def print_tabs(lvl, d_lvl, lvls, line, c):
 	prefix =  ''
 	if c != '*' or not normalized_output:
-		for i in range(d_lvl if normalized_output else lvl + d_lvl):
-			prefix += "\t"
+                prefix = '\t' * (d_lvl if normalized_output else lvl + d_lvl)
 	prefix += convert(lvl, d_lvl, lvls, c)
 	prints.append(prefix + line[count(line, c):])
 
@@ -42,10 +41,12 @@ def print_section():
 				prints[i] = line[:idx] + '+' + line[idx + 1:]
 		print(prints[i])
 	print(prints[-1])
+
+	# Clear the prints list.
 	prints[:] = []
 
 # Tail recursion example
-def g(lines, idx, curr_lvl, dot_lvl, lvls):
+def parse_tail_recursive(lines, idx, curr_lvl, dot_lvl, lvls):
 	if lines is None:
 		line = sys.stdin.readline()
 		if not line:
@@ -59,12 +60,12 @@ def g(lines, idx, curr_lvl, dot_lvl, lvls):
 
 	line = line.strip()
 	if not line:
-		g(lines, idx + 1, curr_lvl, dot_lvl, lvls)
+		parse_tail_recursive(lines, idx + 1, curr_lvl, dot_lvl, lvls)
 	elif line.startswith('.'):
 		x = count(line, '.')
 		print_tabs(curr_lvl, x, lvls, line, '.')
 
-		g(lines, idx + 1, curr_lvl, x, lvls)
+		parse_tail_recursive(lines, idx + 1, curr_lvl, x, lvls)
 	elif line.startswith('*'):
 		print_section()
 
@@ -75,14 +76,14 @@ def g(lines, idx, curr_lvl, dot_lvl, lvls):
 			lvls[x - 1] += 1
 
 		print_tabs(x, 0, lvls, line, '*')
-		g(lines, idx + 1, x, 0, lvls)
+		parse_tail_recursive(lines, idx + 1, x, 0, lvls)
 	else:
 		subs = prints[-1][:count(prints[-1], '\t')]
 		prints[-1] += "\n" + subs + "  " + line
-		g(lines, idx + 1, curr_lvl, dot_lvl, lvls)
+		parse_tail_recursive(lines, idx + 1, curr_lvl, dot_lvl, lvls)
 
 # The iterative approach
-def f():
+def parse_and_build_list():
 	lvls = [0 for i in range(MAX_DOT_NOTATION_LEN)]
 	curr_level = dot_level = 0
 	for line in sys.stdin:
@@ -113,8 +114,8 @@ def f():
 	print_section()
 
 if __name__ == "__main__":
-	#sections = [0 for i in range(MAX_DOT_NOTATION_LEN)]
-	#g(open('input2.txt').readlines(), 0, 0, 0, sections)
-	#g(None, 0, 0, 0, sections)
+	sections = [0 for i in range(MAX_DOT_NOTATION_LEN)]
+	#parse_tail_recursive(open('input2.txt').readlines(), 0, 0, 0, sections)
+	parse_tail_recursive(None, 0, 0, 0, sections)
 
-	f()
+	#parse_and_build_list()

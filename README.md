@@ -1,6 +1,12 @@
 # rax
 Parse a bulleted outline
 
+Assumptions:
+- It assumes that there is a max of 50 subsections, of the format:
+	- 1.1.1....1 (up to 50 subsections)
+	- The intermediate subsections don't have an upperband, since they are stored as integers within a list.
+- It preprocesses sections to mitigate too much information in RAM.
+
 cat input.txt | python script.py > output.txt
 
 Problem Statement: https://pastebin.com/qrnX9Y4G
