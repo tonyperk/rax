@@ -1,0 +1,21 @@
+* This is an outline
+. It's not a very good outline
+.. I've seen better
+.. I've seen worse
+... I saw really bad one back in 2008
+* Numbers
+. Some text
+** Lots
+. Some more text
+*** And lots
+. One
+.. Two
+.. Three
+**** Of Numbers
+. Another line
+** Less Numbers
+. Text
+*** More Numbers
+. Blah
+* One number again
+. The last line

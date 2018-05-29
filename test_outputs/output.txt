@@ -1,0 +1,21 @@
+1 This is an outline
+	+ It's not a very good outline
+		- I've seen better
+		+ I've seen worse
+			- I saw really bad one back in 2008
+2 Numbers
+	- Some text
+2.1 Lots
+	- Some more text
+2.1.1 And lots
+	+ One
+		- Two
+		- Three
+2.1.1.1 Of Numbers
+	- Another line
+2.2 Less Numbers
+	- Text
+2.2.1 More Numbers
+	- Blah
+3 One number again
+	- The last line
